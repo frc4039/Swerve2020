@@ -22,10 +22,12 @@ public class AutonomousChooser {
         ShuffleboardTab autoTab = Shuffleboard.getTab("Autonomous settings");
 
         autonomousModeChooser = new SendableChooser<>();
-        autonomousModeChooser.setDefaultOption("8 Ball Auto", AutonomousMode.EIGHT_BALL);
-        autonomousModeChooser.addOption("8 Ball Compatible", AutonomousMode.EIGHT_BALL_COMPATIBLE);
-        autonomousModeChooser.addOption("10 Ball Auto", AutonomousMode.TEN_BALL);
-        autonomousModeChooser.addOption("Circuit 10 Ball Auto", AutonomousMode.TEN_BALL_CIRCUIT);
+        autonomousModeChooser.setDefaultOption("5ft Forward", AutonomousMode.FORWARD);
+        autonomousModeChooser.addOption("5ft Left, slow", AutonomousMode.LEFT_SLOW);
+        autonomousModeChooser.addOption("5ft Left Diagonal", AutonomousMode.DIAGONAL);
+        autonomousModeChooser.addOption("5ft Left Diagonal, slow", AutonomousMode.DIAGONAL_ROTATE);
+        autonomousModeChooser.addOption("10ft Arc", AutonomousMode.ARC);
+        autonomousModeChooser.addOption("Diagonal, arc back to start, go forward", AutonomousMode.COMPLEX);
         autoTab.add("Mode", autonomousModeChooser)
         .withSize(3, 1);
     }
@@ -34,66 +36,50 @@ public class AutonomousChooser {
         this.trajectories = trajectories;
     }
 
-    private SequentialCommandGroup get10BallAutoCommand(RobotContainer container) {
+    private SequentialCommandGroup getFiveFootForward(RobotContainer container) {
         SequentialCommandGroup command = new SequentialCommandGroup();
 
-        resetRobotPose(command, container, trajectories.getTenBallAutoPartOne());
-        //followAndIntake(command, container, trajectories.getTenBallAutoPartOne());
-        //shootAtTarget(command, container);
-        ////command.addCommands(new FollowTrajectoryCommand(drivetrainSubsystem, trajectories.getTenBallAutoPartTwo()));
-        ////command.addCommands(new TargetWithShooterCommand(shooterSubsystem, visionSubsystem, xboxController));
+        resetRobotPose(command, container, trajectories.getFiveFootForward());
+        
+        return command;
+    }
+
+    private Command getFiveFootLeftSlow(RobotContainer container) {
+        SequentialCommandGroup command = new SequentialCommandGroup();
+
+        resetRobotPose(command, container, trajectories.getFiveFootLeftSlow());
 
         return command;
     }
 
-    private Command get8BallAutoCommand(RobotContainer container) {
+    private Command getFiveFootDiagonal(RobotContainer container) {
         SequentialCommandGroup command = new SequentialCommandGroup();
 
-        //reset robot pose
-        resetRobotPose(command, container, trajectories.getEightBallAutoPartOne());
-        //follow first trajectory and shoot
-        //follow(command, container, trajectories.getEightBallAutoPartOne());
-        //shootAtTarget(command, container, 1.5);
-        //follow second trajectory and shoot
-        //followAndIntake(command, container, trajectories.getEightBallAutoPartTwo());
-
-        //follow(command, container, trajectories.getEightBallAutoPartThree());
-        //shootAtTarget(command, container);
+        resetRobotPose(command, container, trajectories.getFiveFootDiagonal());
 
         return command;
     }
 
-    private Command get8BallCompatibleCommand(RobotContainer container) {
+    public Command getFiveFootDiagonalRotate(RobotContainer container) {
         SequentialCommandGroup command = new SequentialCommandGroup();
 
-        //reset robot pose
-        resetRobotPose(command, container, trajectories.getEightBallCompatiblePartOne());
-        //follow first trajectory and shoot
-        //follow(command, container, trajectories.getEightBallCompatiblePartOne());
-        //shootAtTarget(command, container);
-        //follow second trajectory and shoot
-        //followAndIntake(command, container, trajectories.getEightBallCompatiblePartTwo());
-
-        //follow(command, container, trajectories.getEightBallCompatiblePartThree());
-        //shootAtTarget(command, container);
+        resetRobotPose(command, container, trajectories.getFiveFootDiagonalRotate());
 
         return command;
     }
 
-    public Command getCircuit10BallAutoCommand(RobotContainer container) {
+    public Command getTenFootArc(RobotContainer container) {
         SequentialCommandGroup command = new SequentialCommandGroup();
 
-        // Reset the robot pose
-        resetRobotPose(command, container, trajectories.getCircuitTenBallAutoPartOne());
-        // Pickup the first balls and shoot
-        //followAndIntake(command, container, trajectories.getCircuitTenBallAutoPartOne());
-        //followAndIntake(command, container, trajectories.getCircuitTenBallAutoPartTwo());
-        //shootAtTarget(command, container);
+        resetRobotPose(command, container, trajectories.getTenFootArc());
 
-        // Grab from trench
-        //followAndIntake(command, container, trajectories.getEightBallAutoPartTwo());
-        //followAndIntake(command, container, trajectories.getEightBallAutoPartThree());
-        //shootAtTarget(command, container);
+        return command;
+    }
+
+    public Command getComplexTrajectory(RobotContainer container) {
+        SequentialCommandGroup command = new SequentialCommandGroup();
+
+        resetRobotPose(command, container, trajectories.getComplexTrajectory());
 
         return command;
     }
@@ -101,17 +87,21 @@ public class AutonomousChooser {
     
     public Command getCommand(RobotContainer container) {
         switch (autonomousModeChooser.getSelected()) {
-            case EIGHT_BALL:
-                return get8BallAutoCommand(container);
-            case EIGHT_BALL_COMPATIBLE:
-                return get8BallCompatibleCommand(container);
-            case TEN_BALL:
-                return get10BallAutoCommand(container);
-            case TEN_BALL_CIRCUIT:
-                return getCircuit10BallAutoCommand(container);
+            case FORWARD:
+                return getFiveFootForward(container);
+            case LEFT_SLOW:
+                return getFiveFootLeftSlow(container);
+            case DIAGONAL:
+                return getFiveFootDiagonal(container);
+            case DIAGONAL_ROTATE:
+                return getFiveFootDiagonalRotate(container);
+            case ARC:
+                return getTenFootArc(container);
+            case COMPLEX:
+                return getComplexTrajectory(container);
         }
 
-        return get10BallAutoCommand(container);
+        return getFiveFootForward(container);
     }
     
 
@@ -156,9 +146,11 @@ public class AutonomousChooser {
     }
 
     private enum AutonomousMode {
-        EIGHT_BALL,
-        EIGHT_BALL_COMPATIBLE,
-        TEN_BALL,
-        TEN_BALL_CIRCUIT
+        FORWARD,
+        LEFT_SLOW,
+        DIAGONAL,
+        DIAGONAL_ROTATE,
+        ARC,
+        COMPLEX
     }
 }
