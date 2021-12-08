@@ -32,7 +32,7 @@ public class Mk2SwerveModuleBuilder {
     /**
      * The gear ratio of the drive motor that ships with the standard kit.
      */
-    private static final double DEFAULT_DRIVE_REDUCTION = 8.31 / 1.0;
+    private static final double DEFAULT_DRIVE_REDUCTION = 108.0 / 13.0;
 
     /**
      * The diameter of the standard wheel in inches.

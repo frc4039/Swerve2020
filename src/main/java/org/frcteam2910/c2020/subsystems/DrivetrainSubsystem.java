@@ -1,8 +1,10 @@
 package org.frcteam2910.c2020.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.TalonFX;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
-import com.ctre.phoenix.sensors.PigeonIMU;
+//import com.ctre.phoenix.motorcontrol.can.TalonFX;
+//import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+//import com.ctre.phoenix.sensors.PigeonIMU;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel;
 import com.google.errorprone.annotations.concurrent.GuardedBy;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.AnalogInput;
@@ -14,9 +16,6 @@ import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardLayout;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import org.frcteam2910.c2020.Constants;
-import org.frcteam2910.c2020.Pigeon;
-import org.frcteam2910.c2020.Robot;
-import org.frcteam2910.c2020.RobotContainer;
 import org.frcteam2910.common.control.*;
 import org.frcteam2910.common.drivers.Gyroscope;
 import org.frcteam2910.common.drivers.SwerveModule;
@@ -48,8 +47,11 @@ public class DrivetrainSubsystem implements Subsystem, UpdateManager.Updatable {
             0.665
     );
 
+    //this sample code from 2910 uses a custom gear ratio below, the standard gear ratio (that we use) is 108/13
     private static final double GEAR_REDUCTION = 190.0 / 27.0;
     private static final double WHEEL_DIAMETER = 4.0;
+    //PID Constant for running on Roborio, constants for running on SparkMax are (1.5, 0.0, 0.5)
+    //https://github.com/FRCTeam2910/Common/blob/a240f39c9c3d3ae9f1e74c11cffe07e314c743bd/robot/src/main/java/org/frcteam2910/common/robot/drivers/Mk2SwerveModuleBuilder.java#L42-L62
     private static final PidConstants MODULE_ANGLE_PID_CONSTANTS = new PidConstants(0.5, 0.0, 0.0001);
 
     public static final TrajectoryConstraint[] TRAJECTORY_CONSTRAINTS = {
@@ -63,44 +65,54 @@ public class DrivetrainSubsystem implements Subsystem, UpdateManager.Updatable {
     private final SwerveModule frontLeftModule =
             new Mk2SwerveModuleBuilder(new Vector2(TRACKWIDTH / 2.0, WHEELBASE / 2.0))
                     .angleMotor(
-                            new WPI_TalonFX(Constants.DRIVETRAIN_FRONT_LEFT_ANGLE_MOTOR), MODULE_ANGLE_PID_CONSTANTS)
+                            new CANSparkMax(Constants.DRIVETRAIN_FRONT_LEFT_ANGLE_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushless), Mk2SwerveModuleBuilder.MotorType.NEO)
                     .driveMotor(
-                            new TalonFX(Constants.DRIVETRAIN_FRONT_LEFT_DRIVE_MOTOR), GEAR_REDUCTION, WHEEL_DIAMETER)
+                            new CANSparkMax(Constants.DRIVETRAIN_FRONT_LEFT_DRIVE_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushless), Mk2SwerveModuleBuilder.MotorType.NEO)
                     .angleEncoder(
-                            new AnalogInput(Constants.DRIVETRAIN_FRONT_LEFT_ENCODER_PORT),
+                            new AnalogInput(Constants.DRIVETRAIN_FRONT_LEFT_ENCODER_PORT), 
                             Constants.DRIVETRAIN_FRONT_LEFT_ENCODER_OFFSET)
                     .build();
+
+//            new Mk2SwerveModuleBuilder(new Vector2(TRACKWIDTH / 2.0, WHEELBASE / 2.0))
+//                    .angleMotor(
+//                            new WPI_TalonFX(Constants.DRIVETRAIN_FRONT_LEFT_ANGLE_MOTOR), MODULE_ANGLE_PID_CONSTANTS)
+//                    .driveMotor(
+//                            new TalonFX(Constants.DRIVETRAIN_FRONT_LEFT_DRIVE_MOTOR), GEAR_REDUCTION, WHEEL_DIAMETER)
+//                    .angleEncoder(
+//                            new AnalogInput(Constants.DRIVETRAIN_FRONT_LEFT_ENCODER_PORT),
+//                            Constants.DRIVETRAIN_FRONT_LEFT_ENCODER_OFFSET)
+//                    .build();
 
     private final SwerveModule frontRightModule =
             new Mk2SwerveModuleBuilder(new Vector2(TRACKWIDTH / 2.0, -WHEELBASE / 2.0))
                     .angleMotor(
-                            new WPI_TalonFX(Constants.DRIVETRAIN_FRONT_RIGHT_ANGLE_MOTOR), MODULE_ANGLE_PID_CONSTANTS)
+                            new CANSparkMax(Constants.DRIVETRAIN_FRONT_RIGHT_ANGLE_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushless), Mk2SwerveModuleBuilder.MotorType.NEO)
                     .driveMotor(
-                            new TalonFX(Constants.DRIVETRAIN_FRONT_RIGHT_DRIVE_MOTOR), GEAR_REDUCTION, WHEEL_DIAMETER)
+                            new CANSparkMax(Constants.DRIVETRAIN_FRONT_RIGHT_DRIVE_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushless), Mk2SwerveModuleBuilder.MotorType.NEO)
                     .angleEncoder(
-                            new AnalogInput(Constants.DRIVETRAIN_FRONT_RIGHT_ENCODER_PORT),
+                            new AnalogInput(Constants.DRIVETRAIN_FRONT_RIGHT_ENCODER_PORT), 
                             Constants.DRIVETRAIN_FRONT_RIGHT_ENCODER_OFFSET)
                     .build();
 
     private final SwerveModule backLeftModule =
             new Mk2SwerveModuleBuilder(new Vector2(-TRACKWIDTH / 2.0, WHEELBASE / 2.0))
                     .angleMotor(
-                            new WPI_TalonFX(Constants.DRIVETRAIN_BACK_LEFT_ANGLE_MOTOR), MODULE_ANGLE_PID_CONSTANTS)
+                            new CANSparkMax(Constants.DRIVETRAIN_BACK_LEFT_ANGLE_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushless), Mk2SwerveModuleBuilder.MotorType.NEO)
                     .driveMotor(
-                            new TalonFX(Constants.DRIVETRAIN_BACK_LEFT_DRIVE_MOTOR), GEAR_REDUCTION, WHEEL_DIAMETER)
+                            new CANSparkMax(Constants.DRIVETRAIN_BACK_LEFT_DRIVE_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushless), Mk2SwerveModuleBuilder.MotorType.NEO)
                     .angleEncoder(
-                            new AnalogInput(Constants.DRIVETRAIN_BACK_LEFT_ENCODER_PORT),
+                            new AnalogInput(Constants.DRIVETRAIN_BACK_LEFT_ENCODER_PORT), 
                             Constants.DRIVETRAIN_BACK_LEFT_ENCODER_OFFSET)
                     .build();
 
     private final SwerveModule backRightModule =
             new Mk2SwerveModuleBuilder(new Vector2(-TRACKWIDTH / 2.0, -WHEELBASE / 2.0))
                     .angleMotor(
-                            new WPI_TalonFX(Constants.DRIVETRAIN_BACK_RIGHT_ANGLE_MOTOR), MODULE_ANGLE_PID_CONSTANTS)
+                            new CANSparkMax(Constants.DRIVETRAIN_BACK_RIGHT_ANGLE_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushless), Mk2SwerveModuleBuilder.MotorType.NEO)
                     .driveMotor(
-                            new TalonFX(Constants.DRIVETRAIN_BACK_RIGHT_DRIVE_MOTOR), GEAR_REDUCTION, WHEEL_DIAMETER)
+                            new CANSparkMax(Constants.DRIVETRAIN_BACK_RIGHT_DRIVE_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushless), Mk2SwerveModuleBuilder.MotorType.NEO)
                     .angleEncoder(
-                            new AnalogInput(Constants.DRIVETRAIN_BACK_RIGHT_ENCODER_PORT),
+                            new AnalogInput(Constants.DRIVETRAIN_BACK_RIGHT_ENCODER_PORT), 
                             Constants.DRIVETRAIN_BACK_RIGHT_ENCODER_OFFSET)
                     .build();
 
@@ -115,7 +127,7 @@ public class DrivetrainSubsystem implements Subsystem, UpdateManager.Updatable {
     private final SwerveKinematics swerveKinematics = new SwerveKinematics(
             new Vector2(TRACKWIDTH / 2.0, WHEELBASE / 2.0),         //front left
             new Vector2(TRACKWIDTH / 2.0, -WHEELBASE / 2.0),        //front right
-            new Vector2(-TRACKWIDTH / 2.0, WHEELBASE / 2.0),       //back left
+            new Vector2(-TRACKWIDTH / 2.0, WHEELBASE / 2.0),        //back left
             new Vector2(-TRACKWIDTH / 2.0, -WHEELBASE / 2.0)        //back right
     );
 
