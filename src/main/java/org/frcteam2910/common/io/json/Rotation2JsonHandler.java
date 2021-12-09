@@ -1,7 +1,7 @@
 package org.frcteam2910.common.io.json;
 
 import com.google.gson.*;
-import org.frcteam2910.common.math.Rotation2;
+import org.frcteam2910.c2020.common.math.Rotation2;
 
 import java.lang.reflect.Type;
 

@@ -1,8 +1,8 @@
 package org.frcteam2910.common.robot.subsystems;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.frcteam2910.common.drivers.Gyroscope;
-import org.frcteam2910.common.math.Vector2;
+import org.frcteam2910.c2020.common.drivers.Gyroscope;
+import org.frcteam2910.c2020.common.math.Vector2;
 
 @Deprecated
 public abstract class Drivetrain extends Subsystem {

@@ -1,8 +1,8 @@
 package org.frcteam2910.common.kinematics;
 
-import org.frcteam2910.common.math.RigidTransform2;
-import org.frcteam2910.common.math.Rotation2;
-import org.frcteam2910.common.math.Vector2;
+import org.frcteam2910.c2020.common.math.RigidTransform2;
+import org.frcteam2910.c2020.common.math.Rotation2;
+import org.frcteam2910.c2020.common.math.Vector2;
 
 /**
  * Helper class for swerve drive odometry.

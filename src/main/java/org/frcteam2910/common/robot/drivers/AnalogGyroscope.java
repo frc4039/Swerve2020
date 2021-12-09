@@ -1,8 +1,8 @@
 package org.frcteam2910.common.robot.drivers;
 
 import edu.wpi.first.wpilibj.AnalogGyro;
-import org.frcteam2910.common.drivers.Gyroscope;
-import org.frcteam2910.common.math.Rotation2;
+import org.frcteam2910.c2020.common.drivers.Gyroscope;
+import org.frcteam2910.c2020.common.math.Rotation2;
 
 public final class AnalogGyroscope extends Gyroscope {
 

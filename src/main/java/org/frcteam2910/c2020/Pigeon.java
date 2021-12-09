@@ -1,8 +1,8 @@
 package org.frcteam2910.c2020;
 
 import com.ctre.phoenix.sensors.PigeonIMU;
-import org.frcteam2910.common.drivers.Gyroscope;
-import org.frcteam2910.common.math.Rotation2;
+import org.frcteam2910.c2020.common.drivers.Gyroscope;
+import org.frcteam2910.c2020.common.math.Rotation2;
 
 public class Pigeon extends Gyroscope {
     private final PigeonIMU handle;

@@ -1,6 +1,6 @@
 package org.frcteam2910.common.robot.subsystems;
 
-import org.frcteam2910.common.math.Vector2;
+import org.frcteam2910.c2020.common.math.Vector2;
 
 @Deprecated
 public abstract class HolonomicDrivetrain extends Drivetrain {

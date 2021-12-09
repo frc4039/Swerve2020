@@ -2,8 +2,8 @@ package org.frcteam2910.c2020.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import org.frcteam2910.c2020.subsystems.DrivetrainSubsystem;
-import org.frcteam2910.common.math.Vector2;
-import org.frcteam2910.common.robot.input.Axis;
+import org.frcteam2910.c2020.common.math.Vector2;
+import org.frcteam2910.c2020.common.robot.input.Axis;
 
 public class DriveCommand extends CommandBase {
     private DrivetrainSubsystem drivetrainSubsystem;

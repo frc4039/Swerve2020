@@ -1,10 +1,10 @@
 package org.frcteam2910.common.control;
 
-import org.frcteam2910.common.math.Rotation2;
-import org.frcteam2910.common.math.Vector2;
-import org.frcteam2910.common.math.spline.CubicBezierSpline;
-import org.frcteam2910.common.math.spline.CubicHermiteSpline;
-import org.frcteam2910.common.math.spline.Spline;
+import org.frcteam2910.c2020.common.math.Rotation2;
+import org.frcteam2910.c2020.common.math.Vector2;
+import org.frcteam2910.c2020.common.math.spline.CubicBezierSpline;
+import org.frcteam2910.c2020.common.math.spline.CubicHermiteSpline;
+import org.frcteam2910.c2020.common.math.spline.Spline;
 
 import java.util.*;
 

@@ -6,10 +6,10 @@ import org.frcteam2910.c2020.commands.*;
 import org.frcteam2910.c2020.subsystems.*;
 import org.frcteam2910.c2020.util.AutonomousChooser;
 import org.frcteam2910.c2020.util.AutonomousTrajectories;
-import org.frcteam2910.common.math.Rotation2;
-import org.frcteam2910.common.math.Vector2;
-import org.frcteam2910.common.robot.input.Axis;
-import org.frcteam2910.common.robot.input.XboxController;
+import org.frcteam2910.c2020.common.math.Rotation2;
+import org.frcteam2910.c2020.common.math.Vector2;
+import org.frcteam2910.c2020.common.robot.input.Axis;
+import org.frcteam2910.c2020.common.robot.input.XboxController;
 
 import java.io.IOException;
 

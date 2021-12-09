@@ -1,6 +1,6 @@
 package org.frcteam2910.common.control;
 
-import org.frcteam2910.common.motion.MotionProfile;
+import org.frcteam2910.c2020.common.motion.MotionProfile;
 
 import java.util.Optional;
 

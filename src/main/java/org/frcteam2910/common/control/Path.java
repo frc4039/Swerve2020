@@ -1,9 +1,9 @@
 package org.frcteam2910.common.control;
 
-import org.frcteam2910.common.math.Rotation2;
-import org.frcteam2910.common.math.Vector2;
-import org.frcteam2910.common.util.InterpolatingDouble;
-import org.frcteam2910.common.util.InterpolatingTreeMap;
+import org.frcteam2910.c2020.common.math.Rotation2;
+import org.frcteam2910.c2020.common.math.Vector2;
+import org.frcteam2910.c2020.common.util.InterpolatingDouble;
+import org.frcteam2910.c2020.common.util.InterpolatingTreeMap;
 
 import java.util.Map;
 

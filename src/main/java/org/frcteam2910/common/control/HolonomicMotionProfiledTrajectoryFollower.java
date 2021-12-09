@@ -1,9 +1,9 @@
 package org.frcteam2910.common.control;
 
-import org.frcteam2910.common.math.RigidTransform2;
-import org.frcteam2910.common.math.Vector2;
-import org.frcteam2910.common.util.HolonomicDriveSignal;
-import org.frcteam2910.common.util.HolonomicFeedforward;
+import org.frcteam2910.c2020.common.math.RigidTransform2;
+import org.frcteam2910.c2020.common.math.Vector2;
+import org.frcteam2910.c2020.common.util.HolonomicDriveSignal;
+import org.frcteam2910.c2020.common.util.HolonomicFeedforward;
 
 public class HolonomicMotionProfiledTrajectoryFollower extends TrajectoryFollower<HolonomicDriveSignal> {
     private PidController forwardController;

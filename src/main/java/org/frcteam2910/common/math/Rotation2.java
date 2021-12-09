@@ -1,6 +1,6 @@
 package org.frcteam2910.common.math;
 
-import org.frcteam2910.common.util.Interpolable;
+import org.frcteam2910.c2020.common.util.Interpolable;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;

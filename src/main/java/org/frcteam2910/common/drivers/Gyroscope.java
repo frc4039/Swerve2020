@@ -1,6 +1,6 @@
 package org.frcteam2910.common.drivers;
 
-import org.frcteam2910.common.math.Rotation2;
+import org.frcteam2910.c2020.common.math.Rotation2;
 
 public abstract class Gyroscope {
 	private Rotation2 adjustmentAngle = Rotation2.ZERO;

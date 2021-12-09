@@ -9,9 +9,9 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import org.frcteam2910.c2020.RobotContainer;
 import org.frcteam2910.c2020.commands.*;
-import org.frcteam2910.common.control.Trajectory;
-import org.frcteam2910.common.math.RigidTransform2;
-import org.frcteam2910.common.math.Rotation2;
+import org.frcteam2910.c2020.common.control.Trajectory;
+import org.frcteam2910.c2020.common.math.RigidTransform2;
+import org.frcteam2910.c2020.common.math.Rotation2;
 
 public class AutonomousChooser {
     private final AutonomousTrajectories trajectories;

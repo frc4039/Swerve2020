@@ -1,7 +1,7 @@
 package org.frcteam2910.common.control;
 
-import org.frcteam2910.common.math.Vector2;
-import org.frcteam2910.common.math.spline.Spline;
+import org.frcteam2910.c2020.common.math.Vector2;
+import org.frcteam2910.c2020.common.math.spline.Spline;
 
 public final class SplinePathSegment extends PathSegment {
     private static final double LENGTH_SAMPLE_STEP = 1.0e-4;

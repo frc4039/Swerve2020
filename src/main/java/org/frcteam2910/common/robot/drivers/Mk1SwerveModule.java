@@ -4,10 +4,10 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import org.frcteam2910.common.math.Vector2;
-import org.frcteam2910.common.drivers.SwerveModule;
+import org.frcteam2910.c2020.common.math.Vector2;
+import org.frcteam2910.c2020.common.drivers.SwerveModule;
 
-import static org.frcteam2910.common.robot.Constants.CAN_TIMEOUT_MS;
+import static org.frcteam2910.c2020.common.robot.Constants.CAN_TIMEOUT_MS;
 
 /**
  * Driver for the 2017 revision of the 2910 swerve module.

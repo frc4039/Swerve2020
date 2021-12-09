@@ -1,9 +1,9 @@
 package org.frcteam2910.c2020.util;
 
-import org.frcteam2910.common.control.*;
-import org.frcteam2910.common.io.PathReader;
-import org.frcteam2910.common.math.Rotation2;
-import org.frcteam2910.common.math.Vector2;
+import org.frcteam2910.c2020.common.control.*;
+import org.frcteam2910.c2020.common.io.PathReader;
+import org.frcteam2910.c2020.common.math.Rotation2;
+import org.frcteam2910.c2020.common.math.Vector2;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

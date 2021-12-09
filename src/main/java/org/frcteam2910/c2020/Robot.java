@@ -3,11 +3,11 @@ package org.frcteam2910.c2020;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import org.frcteam2910.common.Logger;
-import org.frcteam2910.common.math.RigidTransform2;
-import org.frcteam2910.common.math.Rotation2;
-import org.frcteam2910.common.robot.UpdateManager;
-import org.frcteam2910.common.robot.drivers.Limelight;
+import org.frcteam2910.c2020.common.Logger;
+import org.frcteam2910.c2020.common.math.RigidTransform2;
+import org.frcteam2910.c2020.common.math.Rotation2;
+import org.frcteam2910.c2020.common.robot.UpdateManager;
+import org.frcteam2910.c2020.common.robot.drivers.Limelight;
 
 import java.io.IOException;
 import java.net.NetworkInterface;
