@@ -40,6 +40,7 @@ public class AutonomousChooser {
         SequentialCommandGroup command = new SequentialCommandGroup();
 
         resetRobotPose(command, container, trajectories.getFiveFootForward());
+        follow(command,container, trajectories.getFiveFootForward());
         
         return command;
     }
@@ -48,6 +49,7 @@ public class AutonomousChooser {
         SequentialCommandGroup command = new SequentialCommandGroup();
 
         resetRobotPose(command, container, trajectories.getFiveFootLeftSlow());
+        follow(command, container, trajectories.getFiveFootLeftSlow());
 
         return command;
     }
@@ -56,6 +58,7 @@ public class AutonomousChooser {
         SequentialCommandGroup command = new SequentialCommandGroup();
 
         resetRobotPose(command, container, trajectories.getFiveFootDiagonal());
+        follow(command, container, trajectories.getFiveFootDiagonal());
 
         return command;
     }
@@ -64,6 +67,7 @@ public class AutonomousChooser {
         SequentialCommandGroup command = new SequentialCommandGroup();
 
         resetRobotPose(command, container, trajectories.getFiveFootDiagonalRotate());
+        follow(command, container, trajectories.getFiveFootDiagonalRotate());
 
         return command;
     }
@@ -72,6 +76,7 @@ public class AutonomousChooser {
         SequentialCommandGroup command = new SequentialCommandGroup();
 
         resetRobotPose(command, container, trajectories.getTenFootArc());
+        follow(command, container, trajectories.getTenFootArc());
 
         return command;
     }
@@ -80,6 +85,7 @@ public class AutonomousChooser {
         SequentialCommandGroup command = new SequentialCommandGroup();
 
         resetRobotPose(command, container, trajectories.getComplexTrajectory());
+        follow(command, container, trajectories.getComplexTrajectory());
 
         return command;
     }
@@ -139,6 +145,11 @@ public class AutonomousChooser {
         command.addCommands(new InstantCommand(() -> container.getIntakeSubsystem().setExtended(false)));
     }
 */
+
+    private void follow(SequentialCommandGroup command, RobotContainer container, Trajectory trajectory) {
+        command.addCommands(new FollowTrajectoryCommand(container.getDrivetrainSubsystem(), trajectory));
+    }
+
     private void resetRobotPose(SequentialCommandGroup command, RobotContainer container, Trajectory trajectory) {
         command.addCommands(new InstantCommand(() -> container.getDrivetrainSubsystem().resetGyroAngle(Rotation2.ZERO)));
         command.addCommands(new InstantCommand(() -> container.getDrivetrainSubsystem().resetPose(

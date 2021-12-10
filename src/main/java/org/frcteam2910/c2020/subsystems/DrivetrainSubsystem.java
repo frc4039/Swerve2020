@@ -48,10 +48,9 @@ public class DrivetrainSubsystem implements Subsystem, UpdateManager.Updatable {
     );
 
     //this sample code from 2910 uses a custom gear ratio below, the standard gear ratio (that we use) is 108/13
-    private static final double GEAR_REDUCTION = 190.0 / 27.0;
+    //2910 used 190.0/27.0
+    private static final double GEAR_REDUCTION = 108.0 / 13.0;
     private static final double WHEEL_DIAMETER = 4.0;
-    //PID Constant for running on Roborio, constants for running on SparkMax are (1.5, 0.0, 0.5)
-    //https://github.com/FRCTeam2910/Common/blob/a240f39c9c3d3ae9f1e74c11cffe07e314c743bd/robot/src/main/java/org/frcteam2910/common/robot/drivers/Mk2SwerveModuleBuilder.java#L42-L62
     private static final PidConstants MODULE_ANGLE_PID_CONSTANTS = new PidConstants(0.5, 0.0, 0.0001);
 
     public static final TrajectoryConstraint[] TRAJECTORY_CONSTRAINTS = {
